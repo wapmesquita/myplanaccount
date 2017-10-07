@@ -1,0 +1,36 @@
+<section class="windfury">
+
+	<section class="section-main">
+		<h4>Dia com menor saldo</h4>
+		<div class="data">
+			<div class="date line">
+				<label>Data: </label>
+				<span>{{!it.day}}/{{!it.month}}/{{!it.year}}</span>
+			</div>
+			<div class="value line">
+				<label>Valor: </label>
+				<span class="money min-value-day-amount {{?it.amountEOD>0}}green{{??}}bad{{?}}">{{!it.amountEOD}}</span>
+			</div>
+		</div>
+  </section>
+
+	<script type="text/javascript">
+		windfury.req([], function($, wf) {
+			var tMain = wf.doT('.section-main');
+
+			var open = function(value, month, year) {
+				value.month = month;
+				value.year = year;
+        var main = tMain(value);
+
+        $('.min-day-value').html(main);
+
+			};
+
+			wf.def({
+				open : open
+			})
+		});
+	</script>
+
+</section>

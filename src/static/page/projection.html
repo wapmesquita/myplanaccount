@@ -1,0 +1,124 @@
+<section class="windfury">
+
+	<section class="section-main">
+		<div class="projection-content">
+			<div class="header">
+				<h3>Projeção de situação financeira</h3>
+				<pre>
+				<div>
+					<label>Selecione até quando você deseja ver a projeção</label>
+				</div>
+				<form id="formProjection" class="form-inline">
+					<div class="form-group">
+							<label for="month">Mês: </label>
+							<input type="Integer" class="month form-control" name="month" id="month" value="12"></input>
+					</div>
+					<div class="form-group">
+							<label for="year">Ano: </label>
+							<input type="Integer" class="year form-control" name="year" id="year" value="2018"></input>
+					</div>
+					<div class="form-group spreadsheet-list">
+						<label for="spreadsheet">Fonte de dados:</label>
+					</div>
+					<button class="btn btn-info btn-calculate" type="submit">OK</button>
+				</form>
+			</pre>
+			</div>
+
+			<div class="summary-content">
+				<div class="min-day-value">
+				</div>
+			</div>
+
+			<ul class="nav nav-tabs nav-view-mode">
+			  <li role="presentation" class="active" data-selector=".month-registers"><a>Projeção</a></li>
+			  <li role="presentation" data-selector=".month-graph"><a>Gastros consolidados</a></li>
+			</ul>
+			<div class="view-content">
+			</div>
+
+		</div>
+	</section>
+
+	<section class="section-sht-list">
+		{{?it.length > 0}}
+		<select class="spreadsheet-list form-control" name="spreadsheet" id="spreadsheet">
+			{{~it:sht}}
+				<option value="{{!sht.key}}">{{!sht.name}}</option>
+			{{~}}
+		</select>
+		{{??}}
+			<a href="#database">Configure uma fonte de dados</a>
+		{{?}}
+	</section>
+
+	<script type="text/javascript">
+		windfury.req(["static/templates/month-view.html"], function($, wf, tMonthView) {
+			var tMain = wf.doT('.section-main');
+			var tShtOptions = wf.doT('.section-sht-list');
+
+			var getNextMonth = function(month) {
+				if (month == 12) return 1;
+				return month + 1;
+			}
+
+			var getNextYear = function(month, year) {
+				if (month == 12) return year + 1;
+				return year;
+			}
+
+			var open = function() {
+					$('#wrapper').html(tMain());
+
+					$.projcore.services.database.list({}, function(list) {
+							$('.spreadsheet-list').append(tShtOptions(list));
+							$.projcore.services.projection.getLastRequested({}, function(result) {
+								if (result)
+									if (result.year) {
+										$("#year").val(result.year);
+										$("#month").val(result.month);
+										$("#spreadsheet").val(result.sht);
+									}
+							});
+					});
+
+
+					$('#formProjection').submit(function(e) {
+						e.preventDefault();
+
+						$('.view-content').html('');
+						$('.min-day-value').html('');
+						$.projcore.services.projection.getLimitedProjection({
+							'month': $('#month').val(),
+							'year': $('#year').val(),
+							'sht_key': $('#spreadsheet').val()
+						}, function (results) {
+							console.info(results)
+							$.each(results, function(idx, projection) {
+								tMonthView.open($('.view-content'), projection);
+							});
+							$.projutils.formatMoney();
+							$('.nav-view-mode li.active').click();
+						});
+
+						return false;
+
+					});
+
+					$('.nav-view-mode li').click(function() {
+						$($('.nav-view-mode li.active').data('selector')).hide();
+						$('.nav-view-mode li').removeClass('active');
+
+						$(this).addClass('active');
+						$($(this).data('selector')).show();
+					});
+
+			}
+
+			wf.def({
+				open : open
+			})
+		});
+	</script>
+
+</section>

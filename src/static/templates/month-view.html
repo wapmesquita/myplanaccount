@@ -1,0 +1,40 @@
+<section class="windfury">
+
+	<section class="section-main">
+		<div class="month-content month-content-{{!it.year}}-{{!it.month}}">
+		</div>
+  </section>
+
+	<script type="text/javascript">
+		windfury.req(["static/templates/min-day-value.html", "static/templates/month-registers.html", "static/templates/month-graph.html"],
+		function($, wf, tMinDayValue, tRegister, tGraph) {
+			var tMain = wf.doT('.section-main');
+
+			var open = function(content, projection) {
+        var main = tMain(projection);
+				content.append(main);
+				var mainContent = $('.month-content-'+projection.year+'-'+projection.month);
+
+				tRegister.open(mainContent, projection);
+				tGraph.open(mainContent, projection);
+
+				var minValueDay;
+				if ($('.min-value-day-amount'))
+					minValueDay = $('.min-value-day-amount').text();
+
+				for (var key in projection.transactionsByDay) {
+					var day = projection.transactionsByDay[key];
+					if (!minValueDay || minValueDay > day.amountEOD) {
+						minValueDay = day.amountEOD;
+						tMinDayValue.open(day, projection.month, projection.year);
+					}
+				}
+			};
+
+			wf.def({
+				open : open
+			})
+		});
+	</script>
+
+</section>

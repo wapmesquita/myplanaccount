@@ -1,0 +1,94 @@
+* {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+hr {margin-top: 3px; margin-bottom:7px;}
+
+pull-right {float:right;}
+
+.bad {color: #f70000}
+.green {color: #00cc00}
+
+#wrapper {width: 90%; margin: auto; display: block;}
+
+.month-content {display: inline;}
+
+.registers-content {text-align: center;}
+.main-content > *,
+.month-content > *,
+.registers-content > * {vertical-align:top;}
+
+.month-registers,
+.month-graph {display: inline-block; width:100%; max-width:315px; margin-right: 20px; margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  border: 1.1px solid #e7e7e7;
+  padding: 6px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.registers-body .day {width: 40px;}
+.registers-body .name {width: 150px; }
+.registers-body .value {width: 120px; text-align: right;}
+.registers-body tr:nth-child(odd) {
+   background-color: #efefef;
+}
+.registers-body tr:hover {
+   background-color: #c6c7c6;
+}
+
+.registers-body .spend .value {color: #f70000}
+.registers-body .revenue .value {color: #1500ff}
+
+.graph-items .group {width: 80px;}
+.graph-items .value {width: 110px; text-align: right;}
+.graph-items .percentage {width: 120px; text-align: right;}
+
+.graph-items tr:nth-child(odd) {
+   background-color: #efefef;
+}
+.graph-items tr:hover {
+   background-color: #c6c7c6;
+}
+
+.investiments-items .group {width: 160px;}
+.investiments-items .value {width: 150px; text-align: right;}
+
+.investiments-items tr:nth-child(odd) {
+   background-color: #e0edf1;
+}
+.investiments-items tr:hover {
+   background-color: #c6c7c6;
+}
+
+
+.form-inline .form-group {margin-right: 8px;}
+.form-inline .form-group label {margin-right: 3px;}
+
+.database-content .config-steps {list-style: none; padding-left: 0px;}
+
+.summary-content{margin-bottom: 15px;}
+.summary-content > div {
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  border: 1.1px solid #e7e7e7;
+  padding: 0px !important;
+}
+
+.summary-content h4 {
+  position: relative;
+  top: 0px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFF;
+  background-color: darkblue;
+  padding: 8px;
+  margin: 0px 0px 10px 0px;
+
+}
+
+.summary-content .data {padding-left: 10px;  padding-right: 10px;}
+.line label {display: inline-block; width: 30%;}
+.line span {display: inline-block;width: 70%; text-align: right;}

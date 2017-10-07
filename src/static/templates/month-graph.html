@@ -1,0 +1,112 @@
+<section class="windfury">
+
+	<section class="section-main">
+    <div class="month-graph" style="display:none;">
+      <div class="header">
+				<span class="group">
+          <label>Total recebido: </label>
+          <span class="money text">{{!it.revenues}}</span>
+        </span>
+        <span class="group pull-right">
+          <span class="date">{{!it.month}}<span> - </span>{{!it.year}}
+          </span>
+        </span>
+      </div>
+
+      <div class="content-graph">
+				<table class="graph-items">
+					{{~it.spends.groups:item}}
+					<tr>
+						<td class="group">{{!item.label}}</td>
+						<td class="value"><span class="money text">{{!item.total}}</span></td>
+						<td class="percentage"><span class="money text">{{!item.value}}</span> %</td>
+					</tr>
+					{{~}}
+				</table>
+
+      </div>
+
+      <div class="footer">
+				<span class="group">
+          <label>Total consumido: </label>
+					<![CDATA[
+					{{?it.spends.percentageTotal<100}}
+					<span class="green">
+          	<span class="money text">{{!it.spends.percentageTotal}}</span>%
+					</span>
+					{{??}}
+					<span class="bad">
+          	<span class="money text">{{!it.spends.percentageTotal}}</span>%
+					</span>
+					{{?}}
+					]]>
+        </span>
+      </div>
+    </div>
+  </section>
+
+	<script type="text/javascript">
+		windfury.req([], function($, wf) {
+			var tMain = wf.doT('.section-main');
+
+			var calculateRevenues = function(projection) {
+				var revenues = 0.0;
+				for (var key in projection.transactionsByDay) {
+					var day = projection.transactionsByDay[key];
+					day.revenues.forEach(function(revenue, index, array) {
+						revenues+=revenue.value;
+					});
+				}
+				return revenues;
+			};
+
+			var calculateSpends = function(totalRevenues, projection) {
+				var groups = {};
+				for (var key in projection.transactionsByDay) {
+					var day = projection.transactionsByDay[key];
+					day.spends.forEach(function(spend, index, array) {
+						var group = groups[spend.group];
+						if (!group) {group = {label: spend.group, total:0.0};}
+
+						group.total+=spend.value;
+
+						groups[spend.group] = group;
+					});
+				}
+
+				var groupArray = [];
+				var percentageTotal = 0.0;
+				for (var key in groups) {
+					var group = groups[key];
+					group.value = (group.total * 100.0) / totalRevenues;
+					percentageTotal+=group.value;
+					groupArray.push(group);
+				}
+
+				return {percentageTotal:percentageTotal, groups:groupArray};
+
+			}
+
+			var open = function(content, projection) {
+				var revenues = calculateRevenues(projection);
+				var spends = calculateSpends(revenues, projection);
+
+        var main = tMain({
+          'totalValue' : projection.initialAmount,
+          'month' : projection.month,
+          'year' : projection.year,
+          'finalAmount' : projection.finalAmount,
+					'revenues' : revenues,
+					'spends': spends
+        });
+
+        content.append(main);
+			};
+
+			wf.def({
+				open : open
+			})
+		});
+	</script>
+
+</section>

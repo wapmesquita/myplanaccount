@@ -1,0 +1,349 @@
+{
+  "revenues": [
+    {
+      "month": null,
+      "name": "Ganho 25",
+      "year": null,
+      "value": 3000,
+      "day": 25,
+      "id": 1
+    },
+    {
+      "month": 6,
+      "name": "Ganho 30/6",
+      "year": null,
+      "value": 2000,
+      "day": 30,
+      "id": 2
+    },
+    {
+      "month": 12,
+      "name": "Ganho 20/12",
+      "year": null,
+      "value": 1000.65,
+      "day": 20,
+      "id": 3
+    },
+    {
+      "month": 9,
+      "name": "Ganho 30/9",
+      "year": null,
+      "value": 1200.8,
+      "day": 30,
+      "id": 4
+    }
+  ],
+  "credit_cards": [
+    {
+      "month": 4,
+      "balance": 510,
+      "name": "Cartão 15-4",
+      "year": 2017,
+      "id_cc": 1,
+      "expirationDay": 15
+    },
+    {
+      "month": 5,
+      "balance": 171.16,
+      "name": "Cartão 15/5",
+      "year": 2017,
+      "id_cc": 1,
+      "expirationDay": 15
+    },
+    {
+      "month": 6,
+      "balance": 110.46,
+      "name": "Cartão 1",
+      "year": 2016,
+      "id_cc": 1,
+      "expirationDay": 15
+    },
+    {
+      "month": 7,
+      "balance": 110.46,
+      "name": "Cartão 7/2017",
+      "year": 2017,
+      "id_cc": 1,
+      "expirationDay": 15
+    },
+    {
+      "month": 4,
+      "balance": 472.1,
+      "name": "Cartão 4/2017 - 2",
+      "year": 2017,
+      "id_cc": 2,
+      "expirationDay": 21
+    },
+    {
+      "month": 4,
+      "balance": 110,
+      "name": "Cartão 4/17",
+      "year": 2017,
+      "id_cc": 3,
+      "expirationDay": 29
+    }
+  ],
+  "recurrent_spends": [
+    {
+      "firstMonth": null,
+      "name": "Recurrent Spend 24 - ... 11/2017",
+      "lastYear": 2017,
+      "value": 1000,
+      "lastMonth": 11,
+      "group": "carro",
+      "firstYear": null,
+      "expirationDay": 25
+    },
+    {
+      "firstMonth": null,
+      "name": "Recurrent Spend 10 - ... - 9/2019",
+      "lastYear": 2019,
+      "value": 500,
+      "lastMonth": 9,
+      "group": "casa",
+      "firstYear": null,
+      "expirationDay": 10
+    },
+    {
+      "firstMonth": 10,
+      "name": "Recurrent Spend 5/10, 5/11, 5/12, 5/1",
+      "lastYear": null,
+      "value": 300,
+      "lastMonth": 1,
+      "group": "car",
+      "firstYear": null,
+      "expirationDay": 5
+    },
+    {
+      "firstMonth": 8,
+      "name": "Recurrent Spend 15 - 8/2017 - 5/2019",
+      "lastYear": 2019,
+      "value": 100,
+      "lastMonth": 5,
+      "group": "casa",
+      "firstYear": 2017,
+      "expirationDay": 15
+    },
+    {
+      "firstMonth": 6,
+      "name": "Recurrent Spend 15 - 6/2017 ...",
+      "lastYear": null,
+      "value": 100,
+      "lastMonth": null,
+      "group": "casa",
+      "firstYear": 2017,
+      "expirationDay": 15
+    }
+  ],
+  "recurrent_investiments": [
+    {
+      "firstMonth": null,
+      "name": "Investiment 24 - ... - 11/2017",
+      "lastYear": 2017,
+      "value": 100,
+      "lastMonth": 11,
+      "target": "Aposentadoria",
+      "firstYear": null,
+      "expirationDay": 25,
+      "interestRateYear": null,
+      "interestRateMonth" : 0.7
+    },
+    {
+      "firstMonth": null,
+      "name": "Investiment 10 - ... - 9/2019",
+      "lastYear": 2019,
+      "value": 50,
+      "lastMonth": 9,
+      "target": "Casa para alugar",
+      "firstYear": null,
+      "expirationDay": 10,
+      "interestRateYear": null,
+      "interestRateMonth" : 0.7
+    },
+    {
+      "firstMonth": 10,
+      "name": "Investiment 5/10, 5/11, 5/12, 5/1",
+      "lastYear": null,
+      "value": 30,
+      "lastMonth": 1,
+      "target": "Carro",
+      "firstYear": null,
+      "expirationDay": 5,
+      "interestRateYear": null,
+      "interestRateMonth" : 0.7
+    },
+    {
+      "firstMonth": 8,
+      "name": "Investiment 15 - 8/2017 - 5/2019",
+      "lastYear": 2019,
+      "value": 10,
+      "lastMonth": 5,
+      "target": "Casa propria",
+      "firstYear": 2017,
+      "expirationDay": 15,
+      "interestRateMonth" : null,
+      "interestRateYear": 10
+    },
+    {
+      "firstMonth": 6,
+      "name": "Investiment 15 - 6/2017 ...",
+      "lastYear": null,
+      "value": 10,
+      "lastMonth": null,
+      "target": "Viagem",
+      "firstYear": 2017,
+      "interestRateYear": 10,
+      "interestRateMonth" : null,
+      "expirationDay": 15
+    }
+  ],
+  "accounts": [
+    {
+      "balance": 500,
+      "kind": "account",
+      "name": "Itau"
+    },
+    {
+      "balance": 10000.64,
+      "kind": "save_account",
+      "name": "Itau - Poupança"
+    },
+    {
+      "balance": 0,
+      "kind": "account",
+      "name": "BB"
+    }
+  ],
+  "proportional_spends": [
+    {
+      "group": "car",
+      "firstDay": 25,
+      "estimateSpend": 300,
+      "expirationDay": 9,
+      "name": "PROPORTIONAL 1 - FD25 - ED9"
+    },
+    {
+      "group": "hobby",
+      "firstDay": 18,
+      "estimateSpend": 500,
+      "expirationDay": 28,
+      "name": "PROPORTIONAL 2 - FD18 - ED28"
+    }
+  ],
+  "spends": [
+    {
+      "month": 1,
+      "name": "Gasto 1",
+      "year": null,
+      "value": 200,
+      "group": "car",
+      "expirationDay": 30
+    },
+    {
+      "month": null,
+      "name": "Gasto 2",
+      "year": null,
+      "value": 100,
+      "group": "hobby",
+      "expirationDay": 5
+    },
+    {
+      "month": null,
+      "name": "Gasto 3",
+      "year": null,
+      "value": 50,
+      "group": "phone",
+      "expirationDay": 9
+    },
+    {
+      "month": null,
+      "name": "Gasto 4",
+      "year": null,
+      "value": 20,
+      "group": "hobby",
+      "expirationDay": 30
+    },
+    {
+      "month": null,
+      "name": "Gasto 5",
+      "year": null,
+      "value": 6.13,
+      "group": "bank",
+      "expirationDay": 7
+    },
+    {
+      "month": null,
+      "name": "Gasto 6",
+      "year": null,
+      "value": 160,
+      "group": "study",
+      "expirationDay": 25
+    },
+    {
+      "month": 1,
+      "name": "Gasto 7",
+      "year": null,
+      "value": 1500,
+      "group": "car",
+      "expirationDay": 10
+    },
+    {
+      "month": 4,
+      "name": "Gasto 8",
+      "year": null,
+      "value": 300,
+      "group": "taxes",
+      "expirationDay": 30
+    },
+    {
+      "month": null,
+      "name": "Gasto 9",
+      "year": null,
+      "value": 22.5,
+      "group": "taxes",
+      "expirationDay": 5
+    }
+  ],
+  "investiments": [
+    {
+      "custody": "Corretora Tesouro Nacional",
+      "type": "Renda Fixa",
+      "application": "Tesouro Direto",
+      "description": "IPCA",
+      "value": 100.45,
+      "startDate": "",
+      "endDate": "15/05/2035",
+      "target": "Aposentadoria"
+    },
+    {
+      "custody": "Corretora Tesouro Nacional",
+      "type": "Renda Fixa",
+      "application": "Tesouro Direto",
+      "description": "Prefixado",
+      "value": 100.45,
+      "startDate": "",
+      "endDate": "15/05/2019",
+      "target": "Aposentadoria"
+    },
+     {
+       "custody": "Corretora Fundos",
+       "type": "Renda Fixa",
+       "application": "Fundos de Investimentos",
+       "description": "Referenciado DI",
+       "value": 7896.69,
+       "startDate": "21/11/2016",
+       "endDate": "1/9/2019",
+       "target": "Casa propria"
+     },
+     {
+       "custody": "Corretora Fundos",
+       "type": "Renda Fixa",
+       "application": "Fundos de Investimentos",
+       "description": "Sparta DI",
+       "value": 800.0,
+       "startDate": "22/12/2016",
+       "endDate": "",
+       "target": "Viagem"
+     }
+    ]
+}

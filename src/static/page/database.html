@@ -1,0 +1,125 @@
+<section class="windfury">
+
+	<section class="section-main">
+		<div class="database-content">
+			<div class="config-source">
+				<h3>Configurar nova fonte de dados</h3>
+				<pre>
+					<ul class="config-steps">
+						<li>1. Crie uma planilha no seu Google Drive;</li>
+						<li>2. Dê um nome para ela;</li>
+						<li>3. Copie a url da planilha ex: <code>"https://docs.google.com/spreadsheets/d/13UDQ_kXzybroSIlMwNGqanh-i1xV5qDwsM9GbOK6OO8/edit#gid=288953989"</code></li>
+						<li>4. Cole no campo abaixo;</li>
+						<li>5. Clique no botão Configurar Planilha;</li>
+						<li>Obs: O sistema poderá solicitar permissão de acesso a planilha; caso isso ocorrá, repita os passos 4 e 5</li>
+					</ul>
+				<form id="formConfig" class="">
+					<div class="form-group">
+							<label for="url">URL:</label>
+							<span><input type="text" name="url" id="url" class="form-control"></input></span>
+					</div>
+					<button type="submit" class="btn btn-default">Configurar Planilha</button>
+				</form>
+			</pre>
+			</div>
+
+			<div class="add-source">
+				<h3>Cadastrar fonte de dados existente</h3>
+				<pre>
+				<form id="formCreate" class="">
+					<div class="form-group">
+							<label for="name">Nome:</label>
+							<span><input type="text" name="name" id="name" class="form-control"></input></span>
+					</div>
+					<label for="key">Chave da planilha:</label>
+					<div class="form-group">
+							<span><input type="text" name="key" id="key" class="form-control"></input></span>
+					</div>
+					<button type="submit" class="btn btn-default">Cadastrar</button>
+				</form>
+				</pre>
+			</div>
+
+			<hr/>
+			<div class="list-source">
+					<h3>Fontes de dados cadastradas</h3>
+					<div class="db-list"/>
+			</div>
+
+			<hr/>
+			<h3>Exemplo de preenchimento</h3>
+			<iframe src="https://docs.google.com/spreadsheets/d/13UDQ_kXzybroSIlMwNGqanh-i1xV5qDwsM9GbOK6OO8/pubhtml" style="width:100%; height: 300px;"/>
+		</div>
+	</section>
+
+	<section class="section-db-list">
+		<table class="table table-striped">
+			<thead>
+				<th>Nome</th>
+				<th>Chave</th>
+			</thead>
+			<tbody>
+				{{?it.length > 0}}
+				{{~it:row}}
+				<tr>
+					<td><a href="https://docs.google.com/spreadsheets/d/{{!row.key}}/edit" target="blank">{{!row.name}}</a></td>
+					<td>{{!row.key}}</td>
+				</tr>
+				{{~}}
+				{{??}}
+				<tr>
+					<td colspan="2">Nenhuma fonte de dados encontrada</td>
+				</tr>
+				{{?}}
+			</tbody>
+		</table>
+	</section>
+
+	<script type="text/javascript">
+		windfury.req([], function($, wf) {
+			var tMain = wf.doT('.section-main');
+			var tList = wf.doT('.section-db-list');
+
+			var loadList = function() {
+				$('.db-list').html('');
+
+				$.projcore.services.database.list({}, function(list) {
+						$('.db-list').html(tList(list));
+				});
+
+			}
+
+			var open = function() {
+					$('#wrapper').html(tMain());
+
+					$('#formCreate').submit(function(e) {
+						e.preventDefault();
+
+						$.projcore.services.database.add({'key': $('#key').val(), 'name': $('#name').val()}, function(result) {
+							loadList();
+						});
+
+						return false;
+					});
+
+					$('#formConfig').submit(function(e) {
+						e.preventDefault();
+
+						$.projcore.services.database.create({'url': $('#url').val()}, function(result) {
+							loadList();
+						});
+
+						return false;
+					});
+
+					loadList();
+
+			}
+
+			wf.def({
+				open : open
+			})
+		});
+	</script>
+
+</section>

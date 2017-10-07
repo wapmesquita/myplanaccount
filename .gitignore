@@ -1,3 +1,14 @@
+## Project 
+*.pyc
+
+lib
+
+oauth_key.json
+
+credentials
+
+## Git Default
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
