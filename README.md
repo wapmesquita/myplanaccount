@@ -1,6 +1,6 @@
 # MyPlanCount
 
-This is a simple guide to configure the development enviroment.
+This is a simple guide to configure the development enviroment. Its live version is in https://myplancount.appspot.com/
 
 ## Requirements
 
